@@ -118,10 +118,11 @@
         margin: 0;
         max-width: 740px;
         font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-        font-size: clamp(3.5rem, 12vw, 7.8rem);
+        font-size: clamp(3.2rem, 8.8vw, 6.45rem);
         font-weight: 700;
         line-height: 0.86;
         letter-spacing: 0;
+        white-space: nowrap;
       }
 
       .lede {
@@ -334,6 +335,10 @@
           padding: 42px 0 34px;
         }
 
+        h1 {
+          font-size: clamp(3.2rem, 12vw, 6.2rem);
+        }
+
         .preview {
           box-shadow: 8px 8px 0 rgba(18, 107, 73, 0.2);
         }
@@ -356,7 +361,7 @@
         }
 
         h1 {
-          font-size: clamp(3.1rem, 19vw, 5.6rem);
+          font-size: clamp(2.8rem, 15.5vw, 4.6rem);
         }
 
         .command-head {
@@ -408,7 +413,7 @@
 
           <div class="command-panel">
             <div class="command-head">
-              <span>installer</span>
+              <span>script</span>
               <button class="copy-button" type="button" data-copy-command>Copy command</button>
             </div>
             <pre class="command"><code id="install-command">curl -fsSL https://sh.cdiag.link | bash</code></pre>
@@ -430,7 +435,7 @@
           </div>
 
           <p class="small-note">
-            The installer prompts before it runs diagnostics. Review source before piping any shell command into your terminal.
+            The script prompts before it runs diagnostics. Review source before piping any shell command into your terminal.
           </p>
         </section>
 
@@ -463,7 +468,7 @@
       </main>
 
       <footer class="footer">
-        <span>Frontpage for the claude-diag installer.</span>
+        <span>Frontpage for the claude-diag script.</span>
         <span>sh.cdiag.link stays the shell endpoint.</span>
       </footer>
     </div>
