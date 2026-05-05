@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -195,8 +195,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1px;
         margin-top: 18px;
+        padding: 0;
         border: 1px solid var(--line);
         background: var(--line);
+        list-style: none;
       }
 
       .fact {
@@ -259,50 +261,254 @@
       .report {
         position: relative;
         display: grid;
+        grid-template-columns: 82px minmax(0, 1fr);
         gap: 16px;
-        padding: 22px;
+        min-height: 462px;
+        padding: 18px;
         font-family: "Menlo", "Consolas", monospace;
-        font-size: 0.82rem;
-        line-height: 1.55;
+        font-size: 0.78rem;
+        line-height: 1.48;
       }
 
-      .report h2 {
-        margin: 0;
-        color: #ffffff;
-        font: 700 1.05rem "Menlo", "Consolas", monospace;
+      .section-rail {
+        display: grid;
+        gap: 8px;
+        align-self: stretch;
+        z-index: 1;
       }
 
-      .row {
+      .rail-step {
+        position: relative;
         display: flex;
         align-items: center;
+        min-height: 58px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        padding: 8px 7px;
+        background: rgba(255, 255, 255, 0.055);
+        color: #aeb8a6;
+        font-size: 0.64rem;
+        font-weight: 700;
+        line-height: 1.2;
+        overflow: hidden;
+        text-transform: uppercase;
+        animation: rail-step 35s infinite;
+        animation-delay: var(--delay);
+      }
+
+      .rail-step::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 3px;
+        background: #60c289;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: rail-progress 35s infinite;
+        animation-delay: var(--delay);
+      }
+
+      .rail-step:nth-child(1),
+      .report-slide:nth-child(1) {
+        --delay: 0s;
+      }
+
+      .rail-step:nth-child(2),
+      .report-slide:nth-child(2) {
+        --delay: 7s;
+      }
+
+      .rail-step:nth-child(3),
+      .report-slide:nth-child(3) {
+        --delay: 14s;
+      }
+
+      .rail-step:nth-child(4),
+      .report-slide:nth-child(4) {
+        --delay: 21s;
+      }
+
+      .rail-step:nth-child(5),
+      .report-slide:nth-child(5) {
+        --delay: 28s;
+      }
+
+      .report-stage {
+        position: relative;
+        min-width: 0;
+        min-height: 426px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 6px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%),
+          rgba(12, 15, 12, 0.45);
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .report-slide {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        align-content: start;
+        gap: 11px;
+        padding: 18px;
+        opacity: 0;
+        transform: translateY(8px);
+        animation: report-slide 35s infinite;
+        animation-delay: var(--delay);
+        overflow: hidden;
+      }
+
+      .report-slide h2,
+      .report-slide h3 {
+        margin: 0;
+        color: #ffffff;
+        font: 700 0.98rem "Menlo", "Consolas", monospace;
+        line-height: 1.3;
+      }
+
+      .report-slide h3 {
+        color: #d7ead9;
+        font-size: 0.8rem;
+      }
+
+      .slide-kicker {
+        color: #93a18e;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .report-lines,
+      .report-list {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .report-line {
+        display: flex;
+        align-items: flex-start;
         justify-content: space-between;
-        gap: 18px;
+        gap: 14px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 12px;
+        padding-top: 8px;
         color: #daddd0;
       }
 
-      .row code {
+      .report-line span:first-child {
+        color: #aeb8a6;
+      }
+
+      .report-line code,
+      .report-list code,
+      .report-table code {
         color: #f1c28b;
         font: inherit;
+        text-align: right;
+        overflow-wrap: anywhere;
       }
 
       .redacted {
         color: #f5a3a3;
       }
 
-      .meter {
-        width: 100%;
-        height: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(255, 255, 255, 0.08);
+      .snippet {
+        margin: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.23);
+        color: #dfe6d8;
+        font: inherit;
+        line-height: 1.45;
+        overflow: hidden;
+        white-space: pre-wrap;
       }
 
-      .meter span {
-        display: block;
-        width: 68%;
-        height: 100%;
-        background: linear-gradient(90deg, #60c289, #f1c28b);
+      .report-list {
+        color: #daddd0;
+      }
+
+      .report-list li {
+        position: relative;
+        padding-left: 14px;
+      }
+
+      .report-list li::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+        color: #60c289;
+      }
+
+      .report-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #daddd0;
+      }
+
+      .report-table th,
+      .report-table td {
+        padding: 7px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .report-table th {
+        color: #aeb8a6;
+        font-weight: 700;
+      }
+
+      @keyframes report-slide {
+        0%,
+        16% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        20%,
+        100% {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+      }
+
+      @keyframes rail-step {
+        0%,
+        16% {
+          border-color: rgba(96, 194, 137, 0.45);
+          background: rgba(96, 194, 137, 0.13);
+          color: #f5f7ec;
+        }
+
+        20%,
+        100% {
+          border-color: rgba(255, 255, 255, 0.12);
+          background: rgba(255, 255, 255, 0.055);
+          color: #aeb8a6;
+        }
+      }
+
+      @keyframes rail-progress {
+        0% {
+          transform: scaleX(0);
+        }
+
+        16% {
+          transform: scaleX(1);
+        }
+
+        20%,
+        100% {
+          transform: scaleX(0);
+        }
       }
 
       .small-note {
@@ -343,6 +549,14 @@
           box-shadow: 8px 8px 0 rgba(18, 107, 73, 0.2);
         }
 
+        .report {
+          min-height: 430px;
+        }
+
+        .report-stage {
+          min-height: 394px;
+        }
+
         .facts {
           grid-template-columns: 1fr;
         }
@@ -378,14 +592,71 @@
           font-size: 0.98rem;
         }
 
-        .row {
+        .report {
+          grid-template-columns: 1fr;
+          min-height: 552px;
+          padding: 14px;
+        }
+
+        .section-rail {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 5px;
+        }
+
+        .rail-step {
+          min-height: 42px;
+          padding: 6px 5px;
+          font-size: 0.54rem;
+        }
+
+        .report-stage {
+          min-height: 458px;
+        }
+
+        .report-slide {
+          padding: 14px;
+        }
+
+        .report-line {
           align-items: flex-start;
           flex-direction: column;
           gap: 6px;
         }
 
+        .report-line code {
+          text-align: left;
+        }
+
+        .report-table th,
+        .report-table td {
+          padding: 6px;
+        }
+
         .footer {
           flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .report-slide,
+        .rail-step,
+        .rail-step::after {
+          animation: none;
+        }
+
+        .report-slide:first-child {
+          opacity: 1;
+          transform: none;
+        }
+
+        .rail-step:first-child {
+          border-color: rgba(96, 194, 137, 0.45);
+          background: rgba(96, 194, 137, 0.13);
+          color: #f5f7ec;
+        }
+
+        .rail-step:first-child::after {
+          transform: scaleX(1);
         }
       }
     </style>
@@ -419,20 +690,20 @@
             <pre class="command"><code id="install-command">curl -fsSL https://sh.cdiag.link | bash</code></pre>
           </div>
 
-          <div class="facts" aria-label="Properties">
-            <div class="fact">
+          <ul class="facts">
+            <li class="fact">
               <strong>Runs locally</strong>
               <span>The bootstrapper downloads the Python script and hands off on your machine.</span>
-            </div>
-            <div class="fact">
+            </li>
+            <li class="fact">
               <strong>Stdlib only</strong>
               <span>The diagnostic script is a single Python file with no package install step.</span>
-            </div>
-            <div class="fact">
+            </li>
+            <li class="fact">
               <strong>Redacted first</strong>
               <span>Tokens, keys, public IPs, emails, and local paths are masked in the report.</span>
-            </div>
-          </div>
+            </li>
+          </ul>
 
           <p class="small-note">
             The script prompts before it runs diagnostics. Review source before piping any shell command into your terminal.
@@ -445,23 +716,132 @@
             <span class="status-dot" aria-hidden="true"></span>
           </div>
           <div class="report">
-            <h2>Claude Code Diagnostics</h2>
-            <div class="row">
-              <span>version</span>
-              <code>claude-diag v0.1.0</code>
+            <div class="section-rail" aria-hidden="true">
+              <span class="rail-step">Header</span>
+              <span class="rail-step">Env</span>
+              <span class="rail-step">Config</span>
+              <span class="rail-step">MCP</span>
+              <span class="rail-step">State</span>
             </div>
-            <div class="row">
-              <span>auth env</span>
-              <code class="redacted">[presence only]</code>
-            </div>
-            <div class="row">
-              <span>tokens</span>
-              <code class="redacted">[REDACTED]</code>
-            </div>
-            <div class="meter" aria-hidden="true"><span></span></div>
-            <div class="row">
-              <span>output</span>
-              <code>local markdown</code>
+
+            <div class="report-stage">
+              <section class="report-slide" aria-label="Report header">
+                <span class="slide-kicker">redacted markdown</span>
+                <h2># Claude Code diagnostic report</h2>
+                <ul class="report-lines">
+                  <li class="report-line">
+                    <span>Generator</span>
+                    <code>`claude-diag` v0.1.0</code>
+                  </li>
+                  <li class="report-line">
+                    <span>Generated</span>
+                    <code>2026-05-05 12:34:56 UTC</code>
+                  </li>
+                  <li class="report-line">
+                    <span>Redaction</span>
+                    <code class="redacted">secrets, emails, hostnames, public IPs, user paths</code>
+                  </li>
+                </ul>
+                <pre class="snippet">[01/17] header
+[02/17] environment
+[03/17] claude command</pre>
+              </section>
+
+              <section class="report-slide" aria-label="Environment and Claude Code">
+                <span class="slide-kicker">runtime + auth posture</span>
+                <h2>## Environment</h2>
+                <ul class="report-lines">
+                  <li class="report-line">
+                    <span>OS / Python</span>
+                    <code>Darwin arm64 / Python 3.x</code>
+                  </li>
+                  <li class="report-line">
+                    <span>Node / npm</span>
+                    <code>v24.x / 11.x</code>
+                  </li>
+                  <li class="report-line">
+                    <span>`claude --version`</span>
+                    <code>2.x (Claude Code)</code>
+                  </li>
+                  <li class="report-line">
+                    <span>install path</span>
+                    <code class="redacted">[HOME-PATH-1]/claude</code>
+                  </li>
+                </ul>
+                <h3>auth env vars (presence only)</h3>
+                <pre class="snippet">ANTHROPIC_API_KEY: unset
+CLAUDE_CODE_OAUTH_TOKEN: unset
+ANTHROPIC_BASE_URL: unset</pre>
+              </section>
+
+              <section class="report-slide" aria-label="Context and settings">
+                <span class="slide-kicker">context + settings summaries</span>
+                <h2>## `/context` output</h2>
+                <pre class="snippet">_skipped via `--no-context`_</pre>
+                <h2>## Global settings</h2>
+                <ul class="report-list">
+                  <li>Top-level keys: <code>env, hooks, permissions, enabledPlugins</code></li>
+                  <li>env vars are listed by key only</li>
+                  <li>hook event names and command counts only</li>
+                </ul>
+                <h2>## Project settings</h2>
+                <pre class="snippet">_no project-level Claude Code config in `$PWD`_</pre>
+              </section>
+
+              <section class="report-slide" aria-label="MCP plugins and skills">
+                <span class="slide-kicker">inventory without secret values</span>
+                <h2>## MCP servers</h2>
+                <pre class="snippet">Checking MCP server health...
+
+codebase-retrieval: auggie --mcp - [ok]
+exa: https://mcp.example/mcp - [ok]</pre>
+                <h2>## Plugins</h2>
+                <pre class="snippet">Installed plugins:
+  typescript-lsp@claude-plugins-official
+  Scope: user
+  Status: enabled</pre>
+                <h2>## Skills</h2>
+                <ul class="report-list">
+                  <li><code>agent-browser/</code> - size and file count</li>
+                  <li><code>codebase-retrieval/</code> - size and file count</li>
+                </ul>
+              </section>
+
+              <section class="report-slide" aria-label="State activity and about">
+                <span class="slide-kicker">local footprint summary</span>
+                <h2>## State footprint</h2>
+                <table class="report-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">dir</th>
+                      <th scope="col">size</th>
+                      <th scope="col">files</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>projects/</code></td>
+                      <td>tracked</td>
+                      <td>count</td>
+                    </tr>
+                    <tr>
+                      <td><code>telemetry/</code></td>
+                      <td>_absent_</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td><code>plugins/</code></td>
+                      <td>tracked</td>
+                      <td>count</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <ul class="report-list">
+                  <li>Activity: history entries and distinct project count</li>
+                  <li>Recent errors: telemetry presence only</li>
+                  <li>About: generated by <code>`claude-diag` v0.1.0</code></li>
+                </ul>
+              </section>
             </div>
           </div>
         </aside>
