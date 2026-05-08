@@ -1,0 +1,49 @@
+---
+import CopyCommand from './CopyCommand.svelte';
+import MockTerminal from './MockTerminal';
+import { installCommand, repoUrl, terminalLines } from '../../lib/homepage/content';
+---
+
+<header class="border-b border-border/75 bg-background/85 backdrop-blur">
+	<div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+		<a href="/" class="focus-ring rounded-2 text-sm font-semibold text-card-foreground">
+			cdiag.link
+		</a>
+		<nav class="flex items-center gap-4 text-sm text-muted-foreground">
+			<a class="focus-ring rounded-2 hover:text-card-foreground" href="#flow">Flow</a>
+			<a class="focus-ring rounded-2 hover:text-card-foreground" href="#report">Report</a>
+			<a class="focus-ring rounded-2 hover:text-card-foreground" href={repoUrl}>GitHub</a>
+		</nav>
+	</div>
+</header>
+
+<section class="border-b border-border/70">
+	<div
+		class="mx-auto grid max-w-7xl items-center gap-8 px-5 py-10 sm:px-6 sm:py-14 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:py-18"
+	>
+		<div class="max-w-2xl">
+			<p class="eyebrow-text mb-4">Claude Code diagnostics</p>
+			<h1
+				class="max-w-4xl text-5xl font-semibold leading-[0.95] text-card-foreground sm:text-6xl lg:text-7xl"
+			>
+				claude-diag
+			</h1>
+			<p class="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
+				A local-first diagnostic report for Claude Code support. Run one command, review
+				the redacted Markdown output, and share only when you choose.
+			</p>
+			<div class="mt-8">
+				<CopyCommand command={installCommand} client:load />
+			</div>
+			<div class="mt-5 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+				<p class="border-l border-border pl-3">Python 3.12+ selected automatically</p>
+				<p class="border-l border-border pl-3">Secrets scrubbed before output</p>
+				<p class="border-l border-border pl-3">Optional PasteMyst publishing</p>
+			</div>
+		</div>
+
+		<div class="lg:pl-4">
+			<MockTerminal lines={terminalLines} client:load />
+		</div>
+	</div>
+</section>

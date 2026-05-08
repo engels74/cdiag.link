@@ -1,0 +1,17 @@
+---
+import { featureCards } from '../../lib/homepage/content';
+---
+
+<section class="border-b border-border/70 bg-[oklch(0.965_0.012_95.1)]">
+	<div class="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8">
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+			{featureCards.map((feature) => (
+				<article class="panel-surface p-5">
+					<p class="eyebrow-text">{feature.kicker}</p>
+					<h2 class="mt-4 text-xl font-semibold text-card-foreground">{feature.title}</h2>
+					<p class="mt-3 text-sm leading-6 text-muted-foreground">{feature.body}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>

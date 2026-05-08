@@ -1,17 +1,18 @@
 ---
+import FeatureGrid from '../components/home/FeatureGrid.astro';
+import FooterSection from '../components/home/FooterSection.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const title = 'claude-diag | Redacted Claude Code diagnostics';
+const description =
+	'Run claude-diag locally with curl -fsSL https://sh.cdiag.link | bash to generate a redacted Claude Code diagnostic report.';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={title} description={description}>
+		<main>
+			<HeroSection />
+			<FeatureGrid />
+		</main>
+	<FooterSection />
+</BaseLayout>

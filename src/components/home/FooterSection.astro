@@ -1,0 +1,16 @@
+---
+import { installCommand, repoUrl } from '../../lib/homepage/content';
+---
+
+<footer class="bg-background">
+	<div
+		class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"
+	>
+		<p>
+			Run <code class="font-mono text-card-foreground">{installCommand}</code>
+		</p>
+		<a class="focus-ring rounded-2 font-semibold text-primary hover:text-card-foreground" href={repoUrl}>
+			github.com/engels74/claude-diag
+		</a>
+	</div>
+</footer>
