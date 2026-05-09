@@ -1,43 +1,62 @@
-# Astro Starter Kit: Minimal
+<p align="center">
+  <img src="public/favicon.svg" alt="cdiag.link Logo" width="256" height="256">
+</p>
+
+<h1 align="center">cdiag.link</h1>
+
+<p align="center">
+  <strong>Install and landing site for claude-diag</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/engels74/cdiag.link/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="License"></a>
+  <img src="https://img.shields.io/badge/bun-%23000000.svg?logo=bun&logoColor=white" alt="Bun">
+  <img src="https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white" alt="Astro">
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" alt="Svelte">
+  <img src="https://img.shields.io/badge/Solid-2C4F7C?logo=solid&logoColor=white" alt="Solid">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/UnoCSS-333333?logo=unocss&logoColor=white" alt="UnoCSS">
+  <a href="https://deepwiki.com/engels74/cdiag.link"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+</p>
+
+## Overview
+
+`cdiag.link` is the public Astro site for `claude-diag`, including the landing page and install command:
 
 ```sh
-bun create astro@latest -- --template minimal
+curl -fsSL https://sh.cdiag.link | bash
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Development
 
-## 🚀 Project Structure
+Install dependencies:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+bun install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Run the local dev server:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+bun dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Check and build:
 
-## 🧞 Commands
+```sh
+bun run check
+bun run build
+```
 
-All commands are run from the root of the project, from a terminal:
+## Stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+- Astro
+- Bun
+- Svelte
+- Solid
+- TypeScript
+- UnoCSS
 
-## 👀 Want to learn more?
+## License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+AGPL-3.0. See [LICENSE](LICENSE).
