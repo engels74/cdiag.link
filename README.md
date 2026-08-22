@@ -13,7 +13,6 @@
   <img src="https://img.shields.io/badge/bun-%23000000.svg?logo=bun&logoColor=white" alt="Bun">
   <img src="https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white" alt="Astro">
   <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" alt="Svelte">
-  <img src="https://img.shields.io/badge/Solid-2C4F7C?logo=solid&logoColor=white" alt="Solid">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/UnoCSS-333333?logo=unocss&logoColor=white" alt="UnoCSS">
   <a href="https://deepwiki.com/engels74/cdiag.link"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
@@ -53,7 +52,6 @@ bun run build
 - Astro
 - Bun
 - Svelte
-- Solid
 - TypeScript
 - UnoCSS
 
