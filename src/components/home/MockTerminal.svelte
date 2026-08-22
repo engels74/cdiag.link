@@ -4,6 +4,13 @@
 
 	let { lines }: { lines: TerminalLine[] } = $props();
 
+	// `lines` arrives once across the island boundary and is never reassigned,
+	// so reading its length here is a deliberate snapshot, not a missed
+	// dependency -- the Solid original read `props.lines.length` just as
+	// non-reactively. Making this reactive would put the timer schedule's
+	// baseline under reactivity while the schedule itself sits in onMount and
+	// never re-runs to match it.
+	// svelte-ignore state_referenced_locally
 	const initialVisibleCount = Math.min(5, lines.length);
 	let visibleCount = $state(initialVisibleCount);
 	const visibleLines = $derived(lines.slice(0, visibleCount));

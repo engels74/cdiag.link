@@ -33,10 +33,11 @@ instead.
 
 - **Islands are Svelte 5, runes only.** Svelte is the one UI framework integration; there is
   no JSX in the repo and `tsconfig.json` configures none, so a new `.tsx` file has no
-  renderer behind it. Use `$props` for inputs, `$state` / `$derived` for reactivity, and
-  `onMount` with a returned teardown for anything that needs cleanup.
-  `src/components/home/CopyCommand.svelte` and `MockTerminal.svelte` are the working
-  references.
+  renderer behind it. Use `$props()` for inputs and `$state` / `$derived` for reactivity;
+  `src/components/home/CopyCommand.svelte` is the smallest working reference. Anything that
+  schedules work also has to tear it down, and `MockTerminal.svelte` is the reference for
+  that half: its timers are armed in `onMount` and cleared by the function `onMount`
+  returns.
 - **A colour token has to be added in three spots.** Declare the custom property in *both* the
   `:root, [data-theme='claude-light']` block and the `[data-theme='claude-dark']` block of
   `src/styles/theme.css`, then map it under `theme.colors` in `uno.config.ts` as
