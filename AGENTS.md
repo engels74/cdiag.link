@@ -31,9 +31,12 @@ instead.
 
 ## Gotchas
 
-- **`.tsx` is Solid, not React.** `tsconfig.json` sets `jsxImportSource: "solid-js"` project
-  wide. Use `createSignal` / `createMemo` / `<For>` / `classList` and read props off the props
-  object; `MockTerminal.tsx` is the working reference.
+- **Islands are Svelte 5, runes only.** Svelte is the one UI framework integration; there is
+  no JSX in the repo and `tsconfig.json` configures none, so a new `.tsx` file has no
+  renderer behind it. Use `$props` for inputs, `$state` / `$derived` for reactivity, and
+  `onMount` with a returned teardown for anything that needs cleanup.
+  `src/components/home/CopyCommand.svelte` and `MockTerminal.svelte` are the working
+  references.
 - **A colour token has to be added in three spots.** Declare the custom property in *both* the
   `:root, [data-theme='claude-light']` block and the `[data-theme='claude-dark']` block of
   `src/styles/theme.css`, then map it under `theme.colors` in `uno.config.ts` as
@@ -62,4 +65,5 @@ instead.
   before adding a route, an island, or a `client:*` directive, or before editing
   `uno.config.ts`. It is the source of truth for stack conventions and is not restated here.
   Note it was researched against Astro 6 while this repo tracks Astro 7, and its server-side
-  guidance is out of scope per **Build target** above.
+  guidance is out of scope per **Build target** above. Its Solid sections are out of scope
+  too — the Solid integration has been removed and islands here are Svelte only.
