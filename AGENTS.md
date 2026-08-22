@@ -21,6 +21,14 @@ There is no test runner, linter, or formatter configured. `astro check` is the e
 static-analysis surface — don't reach for `bun test`, eslint, or prettier, and don't add one to
 satisfy a "run the tests" step.
 
+`typescript` is pinned to `^6.0.3` on purpose. `@astrojs/check` 0.9.9 bundles a language
+server that expects the TypeScript 5/6 JS API (its peer range is `^5.0.0 || ^6.0.0`); under
+TypeScript 7 `astro check` throws `Cannot read properties of undefined (reading 'fileExists')`
+before it inspects a single file. Because `astro check` is the entire static-analysis surface
+here, and the `quality` job in `.github/workflows/deploy-pages.yml` gates `build` and `deploy`
+on it, raising this pin takes the whole pipeline down. TypeScript 7 also has no Svelte
+toolchain support yet. Don't raise it until `@astrojs/check` supports TypeScript 7.
+
 ## Build target
 
 `astro.config.mjs` sets no adapter and no `output`, so the build is fully static and deploys to
